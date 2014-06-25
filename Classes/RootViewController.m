@@ -51,11 +51,21 @@
 		t1.transitionType = Switch3DTransitionLeft;
 		
 		FlipTransition *t2 = [[[FlipTransition alloc] init] autorelease];
-		t2.transitionType = FlipTransitionRight;		
+		t2.transitionType = FlipTransitionRight;
+        //add by haotianling
+        Switch3DTransition *t3 = [[[Switch3DTransition alloc]init]autorelease];
+        t3.transitionType = Switch3DTransitionTop;
+        
+        Switch3DTransition *t4 = [[[Switch3DTransition alloc]init]autorelease];
+        t4.transitionType = Switch3DTransitionBottom;
+        
+    
 		
 		transitionsArray = [[NSArray alloc] initWithObjects:
-							[[[Switch3DTransition alloc] init] autorelease],
+							[[[Switch3DTransition alloc] init] autorelease],//Switch3DTransitionRight 默认的
 							t1,
+                                                        t3,
+                                                        t4,
 							[[[ClothTransition alloc] init] autorelease],							
 							[[[FlipTransition alloc] init] autorelease],
 							t2,
@@ -66,6 +76,8 @@
 		transitionsNamesArray = [[NSArray alloc] initWithObjects:
 								 @"Switch 3D right",
 								 @"Switch 3D left",
+                                                                 @"Switch 3D Top",
+                                                                 @"Switch 3D Bottom",
 								 @"Cloth",
 								 @"Flip left",
 								 @"Flip right",
