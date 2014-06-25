@@ -23,7 +23,10 @@
 
 typedef enum {
 	Switch3DTransitionRight,	
-	Switch3DTransitionLeft
+	Switch3DTransitionLeft,
+        Switch3DTransitionBottom,
+        Switch3DTransitionTop
+
 } Switch3DTransitionType;
 
 @interface Switch3DTransition : HMGLTransition {
