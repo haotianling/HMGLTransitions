@@ -49,7 +49,8 @@
 	
 	// Direction of animation
 	GLfloat direction = 1;
-	if (transitionType == Switch3DTransitionLeft) {
+    
+	if (transitionType == Switch3DTransitionLeft | transitionType == Switch3DTransitionBottom) {
 		direction = -1;
 	}
 	
@@ -80,8 +81,13 @@
 			
 	glPushMatrix();
 	// begin view
-	glBindTexture(GL_TEXTURE_2D, beginTexture);	
-    glTranslatef(direction * sa3 * 1.1, 0, -sah * sah * sah - 1);
+	glBindTexture(GL_TEXTURE_2D, beginTexture);
+    if (transitionType == Switch3DTransitionBottom | transitionType == Switch3DTransitionTop) {
+        glTranslatef(0, direction * sa3 * 1.1, -sah * sah * sah - 1);
+    }else if(transitionType == Switch3DTransitionLeft | transitionType == Switch3DTransitionRight)
+    {
+        glTranslatef(direction * sa3 * 1.1, 0, -sah * sah * sah - 1);
+    }
 	GLfloat intensity = 1 - sah * sah;
 	glColor4f(intensity, intensity, intensity, 1.0);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
@@ -90,7 +96,12 @@
 	// end view
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, endTexture);
-    glTranslatef(-direction * sa3 * 1.1, 0, sah * sah * sah - 2);	
+    if (transitionType == Switch3DTransitionBottom | transitionType == Switch3DTransitionTop) {
+        glTranslatef(0, -direction * sa3 * 1.1, sah * sah * sah - 2);
+    }else if(transitionType == Switch3DTransitionLeft | transitionType == Switch3DTransitionRight)
+    {
+        glTranslatef(-direction * sa3 * 1.1, 0, sah * sah * sah - 2);
+    }
 	intensity = sah * sah;
 	glColor4f(intensity, intensity, intensity, 1.0);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);	
